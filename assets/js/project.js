@@ -181,7 +181,7 @@ $( ".classes" ).on("click",".class",function addEntity(){
 	var end = selection.focusOffset;
 	console.log(start, end)
 	setEntityOutput(selected_text,color_rgb, entity_count);
-	entities.push([,$(this).text(), selected_text]);
+	entities.push([start,end,entity_count,$(this).text(), selected_text, color_rgb]);
 	// alert(window.getSelection().toString());
 	prepareAnnotations(entities)
 	l(selected_text)
