@@ -160,6 +160,10 @@ $("input").keypress(function(e){
 });
 $( ".classes" ).on("click",".class",function addEntity(){
 	entity = [];
+	var startdict=[];
+	var enddict = [];
+	var text1 =[];
+	var labels =[];
 	if($("#editor").attr('contenteditable') == 'true'){
 		alert("Please save the content");
 		return;
@@ -181,7 +185,12 @@ $( ".classes" ).on("click",".class",function addEntity(){
 	var end = selection.focusOffset;
 	console.log(start, end)
 	setEntityOutput(selected_text,color_rgb, entity_count);
-	entities.push([start,end,entity_count,$(this).text(), selected_text, color_rgb]);
+	startdict.push ({start:start})
+	enddict.push ({end:end})
+	text1.push ({word:selected_text})
+	labels.push ({label:$(this).text()})
+	entities.push([startdict,enddict,labels, text1]);
+
 	// alert(window.getSelection().toString());
 	prepareAnnotations(entities)
 	l(selected_text)
